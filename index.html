@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hlasitost</title>
-     <link rel="stylesheet" href="">
+     <link rel="stylesheet" href="style.css">
  
 
 </head>
 <body>
-  <div>
-  <canvas id="myChart"></canvas>
+  <header>
+   <h1>How loud are they</h1>
+ <nav>
+  <button class="chartPicking" id="day"> Last 24 hours</button>
+  <button class="chartPicking" id="threeDays"> Last 3 days</button>
+  <button class="chartPicking" id="Week"> Last week</button>
+<button class="chartPicking" id="Everything">Everything</button>
+<button class="chartPicking" id="day">Fun facts</button>
+ </nav>
+   </header>
+   <div class="container">
+  <div class="wrapper">
+ 
+  
+  <canvas id="grafDen"></canvas>
+</div>
 </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="main.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.98.0/dist/umd/supabase.min.js"></script>
+<script src="script.js"></script>
 </html>
