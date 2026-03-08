@@ -3,6 +3,11 @@
 let graf=null;
 
 
+const kanal = database.channel('live')
+
+kanal.on('broadcast', { event: 'hlasitost' }, (payload) => {
+     document.getElementById('live').innerHTML=`Live loudness: ${payload.payload.value} dB`
+}).subscribe()
 
 
 async function vykreslGraf(typGrafu, pocetTicku) {
