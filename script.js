@@ -10,6 +10,9 @@ kanal.on('broadcast', { event: 'hlasitost' }, (payload) => {
 }).subscribe()
 
 
+
+
+
 async function vykreslGraf(typGrafu, pocetTicku) {
     const { data, error } = await database
         .from(typGrafu)
@@ -20,10 +23,7 @@ async function vykreslGraf(typGrafu, pocetTicku) {
     
    const predchozi = { datum: null }
    const casy = data.map(d => casovyFormat(d.datum_cas, typGrafu,predchozi));
-
-
-
-    const ctx = document.getElementById('grafDen').getContext('2d')
+    const ctx = document.getElementById('graf').getContext('2d')
     if (graf) graf.destroy();
 
     graf=new Chart(ctx, {
@@ -33,7 +33,7 @@ async function vykreslGraf(typGrafu, pocetTicku) {
             datasets: [{
                 label: 'Hlasitost za poslednich 24 hodin',
                 data: hodnoty,
-                borderColor: 'rgb(0, 0, 0)',
+                borderColor: 'black',
                 pointRadius: 0,
                
             }]
@@ -121,6 +121,21 @@ const dd = String(datum.getDate());
 }
 
 
+function setActive(btn) {
+    document.querySelectorAll('.chartPicking').forEach(b => b.classList.remove('active'))
+    btn.classList.add('active')
+}
+
+async function nactiZajimavosti() {
+    const { data: max }  = await database.from('view_max').select('*')
+    const { data: hodina }  = await database.from('view_nejhlasitejsi_hodina').select('*')
+    const { data: prumer }  = await database.from('view_prumer').select('*')
+   
+
+    document.getElementById('max').innerHTML = `${max[0].max}dB`
+    document.getElementById('avg').innerHTML = `${prumer[0].prumer} dB`
+    document.getElementById('hour').innerHTML = `${hodina[0].hodina}:00`
+}
 
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -128,21 +143,55 @@ const denBtn = document.getElementById('day');
 const triDenBtn = document.getElementById('threeDays');
 const tydenBtn = document.getElementById('Week');
 const vseBtn = document.getElementById('Everything');
+const zajimavosti = document.getElementById('funFacts');
+
+const nadpis = document.getElementById('chartHeader');
 
 
 denBtn.addEventListener('click', ()=>{
 vykreslGraf('view_den',24);
+nadpis.innerHTML='Loudnes for the past 24 hours';
+document.getElementById('graf').style.display = 'block'
+    document.getElementById('funFactsDiv').style.display = 'none'
+    setActive(denBtn)
 });
+
+
 triDenBtn.addEventListener('click', ()=>{
 vykreslGraf("view_tri_dny",15);
+nadpis.innerHTML='Loudnes for the past 3 days';
+  document.getElementById('graf').style.display = 'block'
+    document.getElementById('funFactsDiv').style.display = 'none'
+    setActive(triDenBtn)
 });
+
+
 tydenBtn.addEventListener('click', ()=>{
 vykreslGraf("view_tyden",18);
+nadpis.innerHTML='Loudnes for the past week';
+  document.getElementById('graf').style.display = 'block'
+    document.getElementById('funFactsDiv').style.display = 'none'
+    setActive(tydenBtn)
 });
+
+
 vseBtn.addEventListener('click', ()=>{
 vykreslGraf('view_vsechno',20);
+nadpis.innerHTML='Loudnes since the begining';
+  document.getElementById('graf').style.display = 'block'
+    document.getElementById('funFactsDiv').style.display = 'none'
+    setActive(vseBtn)
 });
 
 
+zajimavosti.addEventListener('click', ()=>{
+nadpis.innerHTML='Fun facts';
+document.getElementById('graf').style.display = 'none'
+document.getElementById('funFactsDiv').style.display = 'flex'
+setActive(zajimavosti)
+nactiZajimavosti()
+});
+
 vykreslGraf('view_den',24);
+setActive(denBtn)
 });

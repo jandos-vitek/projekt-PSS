@@ -16,18 +16,43 @@
   <button class="chartPicking" id="threeDays"> Last 3 days</button>
   <button class="chartPicking" id="Week"> Last week</button>
 <button class="chartPicking" id="Everything">Everything</button>
-<button class="chartPicking" id="day">Fun facts</button>
+<button class="chartPicking" id="funFacts">Fun facts</button>
  </nav>
    </header>
    <div class="container">
-   
-  <div class="wrapper">
+   <h2 id="chartHeader">Loudnes for the past 24 hours</h2>
  
-  
-  <canvas id="grafDen"></canvas>
+  <div class="funFactsDiv" id="funFactsDiv">
+
+  <div class="funFactsRow"> 
+   <p>Max value ever measured: </p>
+  <p id="max">0dB</p>
+  </div>
+
+   <div class="funFactsRow"> 
+   <p>Average loudest hour: </p>
+  <p id="hour">12:00</p>
+  </div>
+
+   <div class="funFactsRow"> 
+   <p>Average loudness: </p>
+  <p id="avg">0dB</p>
+  </div>
+
+ <div class="funFactsRow"> 
+   <p>Average loudness: </p>
+  <p >0dB</p>
+  </div>
 </div>
+
+ <div>
+  <canvas id="graf"></canvas>
+</div>
+
 <div id="live" class="live">Live loudness: 0 dB</div>
-</div>
+
+   </div>
+   </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
