@@ -130,11 +130,14 @@ async function nactiZajimavosti() {
     const { data: max }  = await database.from('view_max').select('*')
     const { data: hodina }  = await database.from('view_nejhlasitejsi_hodina').select('*')
     const { data: prumer }  = await database.from('view_prumer').select('*')
-   
+    const { data: nejhlasitejsiDen }  = await database.from('view_nejhlasitejsi_den').select('*')
+    const { data: nejtissi }  = await database.from('view_nejtissi_den').select('*')
 
-    document.getElementById('max').innerHTML = `${max[0].max}dB`
+    document.getElementById('max').innerHTML = `${max[0].max} dB`
     document.getElementById('avg').innerHTML = `${prumer[0].prumer} dB`
     document.getElementById('hour').innerHTML = `${hodina[0].hodina}:00`
+    document.getElementById('loudDay').innerHTML = `${nejhlasitejsiDen[0].den}`
+    document.getElementById('quietDay').innerHTML = `${nejtissi[0].den}`
 }
 
 
