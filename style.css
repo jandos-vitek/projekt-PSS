@@ -17,18 +17,21 @@ header {
     justify-content: space-between;
      margin: 0;
     border-bottom: 5px solid rgb(172, 194, 255);
+    width: 100%;
 }
 
 h1 {
   font-family: monospace, Courier;
-    font-weight: bold;
+font-weight: bold;
     margin: 0;
     color: white;
+margin-right: 50px;
 }
 
 nav {
     display: flex;
-    gap: 17px;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .chartPicking {
@@ -43,13 +46,14 @@ nav {
     font-size: 16px;
     color: white;
     cursor: pointer;
-
+    user-select: none;
 }
 
 .chartPicking:hover {
     border-color: rgb(172, 194, 255);
     color:  rgb(172, 194, 255);
 }
+
 .chartPicking.active {
     border-color: rgb(172, 194, 255);
     background: rgb(172, 194, 255);
@@ -58,7 +62,7 @@ nav {
 
 h2{
  font-family: monospace, Courier;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     color: rgb(0, 0, 0);
 }
 
@@ -71,10 +75,10 @@ h2{
 }
 
 
-canvas{
-   width: 100%;
-    max-width: 1200px;
-    height: 500px;  
+.wrapper{
+max-width: 1300px;
+width: 100%;
+    height: 550px;  
 }
 
 .live {
@@ -97,11 +101,69 @@ canvas{
     gap:15px;
 
 }
+
 .funFactsRow{
 display: flex;
 justify-content: space-between;
 }
+
 p{
     font-family:monospace, Courier;
      font-size: 22px;
+}
+
+@media (max-width: 800px) {
+
+   .container {
+    padding: 10px;
+   }
+header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .chartPicking {
+        width: 140px;
+        font-size: 15px;
+        height: 35px;
+    }
+h1 {
+margin-right: 0px;
+}
+}
+
+@media (max-width: 660px) {
+
+.funFactsDiv{
+ width: 100%;
+    height: 400px;
+    padding: 15px;
+    gap: 4px;
+}
+   .wrapper{
+height: 400px;
+    }
+    h2 {
+font-size: 20px;
+}
+    p{
+     font-size: 18px;
+}
+
+}
+@media (max-width: 580px) {
+ .chartPicking {
+        width: 120px;
+         padding: 4px;
+    }
+p{
+     font-size: 16px; 
+}
 }

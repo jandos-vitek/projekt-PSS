@@ -73,8 +73,8 @@ async function vykreslGraf(typGrafu, pocetTicku) {
                 color: 'black'
             
             },
-        min: Math.min(...hodnoty) - 5,
-    max: Math.max(...hodnoty) + 5,
+       min: Math.floor((Math.min(...hodnoty)) / 5) * 5,
+    max: Math.ceil((Math.max(...hodnoty)) / 5) * 5,
         }
     },
         responsive: true,
@@ -156,6 +156,8 @@ vykreslGraf('view_den',24);
 nadpis.innerHTML='Loudnes for the past 24 hours';
 document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
+        document.getElementById('funFactsDiv').style.display = 'none'
+ document.getElementById('wrapper').style.display = 'block'
     setActive(denBtn)
 });
 
@@ -165,6 +167,7 @@ vykreslGraf("view_tri_dny",15);
 nadpis.innerHTML='Loudnes for the past 3 days';
   document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
+     document.getElementById('wrapper').style.display = 'block'
     setActive(triDenBtn)
 });
 
@@ -174,6 +177,7 @@ vykreslGraf("view_tyden",18);
 nadpis.innerHTML='Loudnes for the past week';
   document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
+     document.getElementById('wrapper').style.display = 'block'
     setActive(tydenBtn)
 });
 
@@ -183,6 +187,7 @@ vykreslGraf('view_vsechno',20);
 nadpis.innerHTML='Loudnes since the begining';
   document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
+     document.getElementById('wrapper').style.display = 'block'
     setActive(vseBtn)
 });
 
@@ -191,6 +196,7 @@ zajimavosti.addEventListener('click', ()=>{
 nadpis.innerHTML='Fun facts';
 document.getElementById('graf').style.display = 'none'
 document.getElementById('funFactsDiv').style.display = 'flex'
+ document.getElementById('wrapper').style.display = 'none'
 setActive(zajimavosti)
 nactiZajimavosti()
 });
