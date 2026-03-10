@@ -105,13 +105,13 @@ function casovyFormat(datum_cas,typGrafu,predchozi){
 const dd = String(datum.getDate());
     const mes = String(datum.getMonth() + 1).padStart(2, '0');
 
-    if(typGrafu=="view_den"){
+    if(typGrafu=="view_den" || typGrafu=="view_dvanact"){
     return `${hh}:${mm} `
     }
-    if(typGrafu=="view_tyden"||typGrafu=="view_tri_dny"){
+    if(typGrafu=="view_tri_dny"){
     return `${dd}/${mes} ${hh}:${mm}`;
     }
-     if(typGrafu=="view_vsechno"){
+     if(typGrafu=="view_tyden"){
 
         const aktualniDatum = `${dd}/${mes}`
         if (aktualniDatum == predchozi.datum) {
@@ -147,10 +147,10 @@ async function nactiZajimavosti() {
 
 
 window.addEventListener('DOMContentLoaded', ()=>{
+const dvanact = document.getElementById('twelve');
 const denBtn = document.getElementById('day');
 const triDenBtn = document.getElementById('threeDays');
 const tydenBtn = document.getElementById('Week');
-const vseBtn = document.getElementById('Everything');
 const zajimavosti = document.getElementById('funFacts');
 
 const nadpis = document.getElementById('chartHeader');
@@ -187,13 +187,13 @@ nadpis.innerHTML='Loudnes for the past week';
 });
 
 
-vseBtn.addEventListener('click', ()=>{
-vykreslGraf('view_vsechno',20);
+dvanact.addEventListener('click', ()=>{
+vykreslGraf('view_dvanact',12);
 nadpis.innerHTML='Loudnes since the begining';
   document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
      document.getElementById('wrapper').style.display = 'block'
-    setActive(vseBtn)
+    setActive(dvanact)
 });
 
 
