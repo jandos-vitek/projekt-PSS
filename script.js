@@ -18,6 +18,7 @@ async function vykreslGraf(typGrafu, pocetTicku) {
         .from(typGrafu)
         .select('*')
 
+
     const hodnoty = data.map(d => d.hlasitost)
 
     
@@ -25,6 +26,10 @@ async function vykreslGraf(typGrafu, pocetTicku) {
    const casy = data.map(d => casovyFormat(d.datum_cas, typGrafu,predchozi));
     const ctx = document.getElementById('graf').getContext('2d')
     if (graf) graf.destroy();
+
+
+   console.log(error)
+   console.log(data)
 
     graf=new Chart(ctx, {
         type: 'line',
