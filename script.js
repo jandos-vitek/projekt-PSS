@@ -36,7 +36,7 @@ async function vykreslGraf(typGrafu, pocetTicku) {
         data: {
             labels: casy,
             datasets: [{
-                label: 'Hlasitost za poslednich 24 hodin',
+                label: 'Hlasitost',
                 data: hodnoty,
                 borderColor: 'black',
                 pointRadius: 0,
