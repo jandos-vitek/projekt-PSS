@@ -189,7 +189,7 @@ nadpis.innerHTML='Loudnes for the past week';
 
 dvanact.addEventListener('click', ()=>{
 vykreslGraf('view_dvanact',12);
-nadpis.innerHTML='Loudnes since the begining';
+nadpis.innerHTML='Loudnes for the past 12 hours';
   document.getElementById('graf').style.display = 'block'
     document.getElementById('funFactsDiv').style.display = 'none'
      document.getElementById('wrapper').style.display = 'block'
